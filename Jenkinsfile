@@ -26,6 +26,9 @@ pipeline {
             steps {
                 sh '''
                     set -eux
+                    export HOME="${WORKSPACE}/.ci-home"
+                    export NPM_CONFIG_CACHE="${WORKSPACE}/.npm-cache"
+                    mkdir -p "$HOME" "$NPM_CONFIG_CACHE"
                     node --version
                     npm --version
                     rm -rf node_modules
